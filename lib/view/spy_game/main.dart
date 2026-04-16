@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // 替換成你在 Supabase 儀表板拿到的 URL 與 Key
-  await Supabase.initialize(
-    url: 'https://qcidmpjcywlfycarffyg.supabase.co',
-    anonKey: 'sb_publishable_YTgST-f2RxjaVc1BHMCL0g_HKzVo3Ek',
-  );
+  try {
+    // 嘗試載入 .env
+    await dotenv.load(fileName: ".env");
+    print("✅ .env 載入成功！");
+
+    // 初始化 Supabase
+    await Supabase.initialize(
+      url: dotenv.env['SUPABASE_URL']!,
+      anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
+    );
+    print("✅ Supabase 初始化成功！");
+
+  } catch (e) {
+    print("❌ 啟動發生錯誤: $e");
+    // 如果出錯，至少在終端機印出來，讓你一眼看出問題
+  }
 
   runApp(const UndercoverApp());
 }
