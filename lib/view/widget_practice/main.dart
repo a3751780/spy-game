@@ -119,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Image.asset(
-            'assets/image/logo.png',
+            'assets/image/spy.png',
             width: 28,
             height: 28,
           ),
