@@ -1,0 +1,34 @@
+name: Flutter Web Deploy to GitHub Pages
+
+# 只有當程式碼推送到 main 分支時才會觸發
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🛠️ Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable' # 使用穩定版 Flutter
+
+      - name: 📦 Install dependencies
+        run: flutter pub get
+
+      - name: 🏗️ Build Web
+        # 注意！因為你的 main.dart 放在 lib/spy_game 裡，所以必須加上 -t 參數
+        # 並且要設定 --base-href 為你的儲存庫名稱（前後要有斜線）
+        run: flutter build web -t lib/view/spy_game/main.dart --base-href "/spy-game/"
+
+      - name: 🚀 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
