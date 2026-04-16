@@ -1,0 +1,81 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# 專案特有的隱私或自動產生檔案
+# 如果你有用 code_generator (如 build_runner)，雖然產生的檔案通常要上傳，
+# 但有些暫存檔可以排除。
+*.g.dart
+*.freezed.dart
+# 注意：若團隊習慣將產生的程式碼一併納入版本控制，請註解掉上方兩行。
+
+# Android Studio will place build artifacts here
+.gradle/
+local.properties
+*.kwks
+*.keystore
+*.jks
+# 排除編譯產物
+AndroidStudio/
+Captures/
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# iOS/macOS 相關
+# 排除 CocoaPods 產生的目錄（通常透過 pod install 重新產生）
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/ServiceDefinitions.json
+**/ios/Runner/GeneratedPluginRegistrant.*
+
+# 6. Web 相關
+.wasm/
+
+# 7. 測試與覆蓋率
+coverage/
+test/.test_coverage
+
+# 8. 環境變數檔案 (極重要！)
+# 包含 API Keys 或敏感資訊的檔案絕對不要上傳
+.env
+.env.*
