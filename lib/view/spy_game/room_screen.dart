@@ -90,6 +90,7 @@ class _RoomScreenState extends State<RoomScreen> {
 
     // 3. 訂閱並追蹤自己的狀態
     _channel.subscribe((status, [error]) {
+      print('====== Realtime 狀態: $status, 錯誤: $error ======');
       if (status == RealtimeSubscribeStatus.subscribed) {
         // 連線成功，上傳自己的名字到 Presence
         _channel.track({'player_name': widget.playerName});
